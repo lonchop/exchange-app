@@ -3,9 +3,6 @@
     <div v-if="isLoading" class="flex justify-center mt-12">
       <BounceLoader :loading="isLoading" :color="'#76ABAE'" :size="'100px'" />
     </div>
-    <!-- <div :v-if="isLoading">
-      <p>Cargando...</p>
-    </div> -->
     <AssetsTableComponent v-if="!isLoading" v-bind:assets="assets" />
   </div>
 </template>
@@ -13,7 +10,6 @@
 <script>
 import AssetsTableComponent from '@/components/AssetsTableComponent.vue'
 import { getAssets } from '@/api'
-// import { BeatLoader } from "vue3-spinner";
 import { BounceLoader } from 'vue3-spinner'
 
 export default {
