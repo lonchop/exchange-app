@@ -6,17 +6,19 @@
       >
         <th></th>
         <th :class="{ up: sortOrder === 1, down: sortOrder === -1 }">
-          <span class="underline cursor-pointer" @click="changeSortOrder">Ranking</span>
+          <span class="underline cursor-pointer" @click="changeSortOrder">{{
+            $t('label.ranking')
+          }}</span>
         </th>
-        <th>Nombre</th>
-        <th>Precio</th>
-        <th>Cap. de Mercado</th>
-        <th>Variación 24hs</th>
+        <th>{{ $t('label.name') }}</th>
+        <th>{{ $t('label.price') }}</th>
+        <th>{{ $t('label.market_cap') }}</th>
+        <th>{{ $t('label.24hs_variation') }}</th>
         <td class="hidden sm:block">
           <input
             class="focus:outline-none py-2 px-4 block w-full appearance-none leading-normal bg-background-2 rounded-2xl text-white"
             id="filter"
-            placeholder="Buscar..."
+            :placeholder="`${$t('label.search')}...`"
             type="text"
             v-model="filter"
           />
@@ -56,7 +58,7 @@
         </td>
         <td class="hidden sm:block">
           <ButtonComponent v-on:custom-click="goToCoin(asset.id)">
-            <span>Detalles</span>
+            <span>{{ $t('button.details') }}</span>
           </ButtonComponent>
         </td>
       </tr>

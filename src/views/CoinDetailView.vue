@@ -20,27 +20,27 @@
         <div class="my-10 flex flex-col">
           <ul>
             <li class="flex justify-between">
-              <b class="text-gray-600 mr-10 uppercase">Ranking</b>
+              <b class="text-gray-600 mr-10 uppercase">{{ $t('label.ranking') }}</b>
               <span>#{{ asset.rank }}</span>
             </li>
             <li class="flex justify-between">
-              <b class="text-gray-600 mr-10 uppercase">Precio actual</b>
+              <b class="text-gray-600 mr-10 uppercase">{{ $t('label.current_price') }}</b>
               <span>{{ dollar(asset.priceUsd) }}</span>
             </li>
             <li class="flex justify-between">
-              <b class="text-gray-600 mr-10 uppercase">Precio más bajo</b>
+              <b class="text-gray-600 mr-10 uppercase">{{ $t('label.lower_price') }}</b>
               <span>{{ dollar(min) }}</span>
             </li>
             <li class="flex justify-between">
-              <b class="text-gray-600 mr-10 uppercase">Precio más alto</b>
+              <b class="text-gray-600 mr-10 uppercase">{{ $t('label.higher_price') }}</b>
               <span>{{ dollar(max) }}</span>
             </li>
             <li class="flex justify-between">
-              <b class="text-gray-600 mr-10 uppercase">Precio Promedio</b>
+              <b class="text-gray-600 mr-10 uppercase">{{ $t('label.average_price') }}</b>
               <span>{{ dollar(avg) }}</span>
             </li>
             <li class="flex justify-between">
-              <b class="text-gray-600 mr-10 uppercase">Variación 24hs</b>
+              <b class="text-gray-600 mr-10 uppercase">{{ $t('label.24hs_variation') }}</b>
               <span>{{ percent(asset.changePercent24Hr) }}</span>
             </li>
           </ul>
@@ -51,7 +51,7 @@
             class="bg-primary hover:bg-primary-2 text-white font-bold py-2 px-4 rounded"
             @click="toggleConverter"
           >
-            {{ fromUsd ? `USD a ${asset.symbol}` : `${asset.symbol} a USD` }}
+            {{ fromUsd ? `USD ${$t('label.to')} ${asset.symbol}` : `${asset.symbol} a USD` }}
           </button>
 
           <div class="flex flex-row my-5">
@@ -60,7 +60,7 @@
                 class="text-center bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal text-background-2"
                 id="convertValue"
                 type="number"
-                :placeholder="`Valor en ${fromUsd ? 'USD' : asset.symbol}`"
+                :placeholder="`${$t('label.value_in')} ${fromUsd ? 'USD' : asset.symbol}`"
                 v-model="convertValue"
               />
             </label>
@@ -78,7 +78,9 @@
         :data="history.map((h) => [h.date, parseFloat(h.priceUsd).toFixed(2)])"
       />
 
-      <h3 class="text-xl mb-8 mt-16 text-center font-semibold">Mejores Ofertas de Cambio</h3>
+      <h3 class="text-xl mb-8 mt-16 text-center font-semibold">
+        {{ $t('menu.best_exchange_offers') }}
+      </h3>
       <table v-for="m in markets" :key="`${m.exchangeId}-${m.priceUsd}`" class="border-b w-full">
         <tr class="grid grid-cols-2 md:grid-cols-4 justify-center items-center">
           <td>
@@ -89,13 +91,13 @@
           <td>
             <div class="flex justify-center items-center" v-if="!m.url">
               <ButtonComponent :is-loading="m.isLoading || false" @custom-click="getWebSite(m)">
-                <slot>Obtener Link</slot>
+                <slot>{{ $t('button.get_link') }}</slot>
               </ButtonComponent>
             </div>
             <div class="flex justify-center items-center h-12" v-else>
               <a
                 class="text-xs md:text-base hover:underline text-primary cursor-pointer"
-                :href="m.url !== 'No se encontró el link del exchange' ? m.url : null"
+                :href="m.url !== $t('message.exchange_link_not_found') ? m.url : null"
                 target="_blank"
                 >{{ m.url }}</a
               >
@@ -182,7 +184,7 @@ export default {
         .catch((error) => {
           // Captura y maneja el error aquí
           console.error('Error al obtener el sitio web del exchange:', error)
-          exchange.url = 'No se encontró el link del exchange'
+          exchange.url = this.$t('message.exchange_link_not_found')
         })
         .finally(() => {
           exchange.isLoading = false

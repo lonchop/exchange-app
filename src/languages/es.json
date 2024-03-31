@@ -1,0 +1,38 @@
+{
+  "menu": {
+    "best_exchange_offers": "Mejores Ofertas de Cambio"
+  },
+  "label": {
+    "ranking": "Clasificación",
+    "name": "Nombre",
+    "price": "Precio",
+    "current_price": "Precio actual",
+    "lower_price": "Precio más bajo",
+    "higher_price": "Precio más alto",
+    "average_price": "Precio promedio",
+    "market_cap": "Cap de mercado",
+    "24hs_variation": "Variación 24hs",
+    "search": "Buscar",
+    "to": "a",
+    "value_in": "Valor en"
+  },
+  "button": {
+    "details": "Detalles",
+    "get_link": "Obtener link",
+    "change_language": "Cambiar idioma"
+  },
+  "number": {
+    "10": "10",
+    "25": "25",
+    "50": "50",
+    "100": "100",
+    "500": "500",
+    "1000": "1000"
+  },
+  "error": {
+    "something_wrong": "Ocurre algo."
+  },
+  "message": {
+    "exchange_link_not_found": "No se encontró el link del exchange"
+  }
+}
