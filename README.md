@@ -17,7 +17,7 @@ Data Visualization with Charts: To provide a deeper and visual understanding of 
 
 ## Demo
 
-[Exchange App](https://exchange-app.vercel.app/)
+[Exchange App](exchange-app-lonchop.vercel.app/)
 
 ## Installation Steps:
 
