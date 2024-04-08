@@ -17,14 +17,14 @@ export default defineConfig({
         theme_color: '#75AAAD',
         icons: [
           {
-            src: 'exchange-app-192x174.png',
-            sizes: '192x174',
+            src: 'exchange-app-192x192.png',
+            sizes: '192x192',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: 'exchange-app-512x466.png',
-            sizes: '512x466',
+            src: 'exchange-app-512x512.png',
+            sizes: '512x512',
             type: 'image/png',
             purpose: 'maskable'
           }
