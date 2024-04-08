@@ -4,7 +4,7 @@
       <div class="flex items-center flex-shrink-0 text-white mr-6">
         <IconComponent class="mr-2" />
         <RouterLink
-          class="font-semibold text-xl tracking-tight text-background-2"
+          class="font-semibold text-lg md:text-xl tracking-tight text-background-2"
           :to="{ name: 'home' }"
           >Exchange App</RouterLink
         >
@@ -23,7 +23,6 @@
       </div>
 
       <div>
-        <!-- <button @click="changeLanguage">{{ $t('button.change_language') }}</button> -->
         <ButtonComponent v-on:custom-click="changeLanguage()">
           <span>{{ $t('button.change_language') }}</span>
         </ButtonComponent>
